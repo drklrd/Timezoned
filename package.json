@@ -20,6 +20,7 @@
     "jsdom": "^9.8.3",
     "location": "0.0.1",
     "moment": "^2.15.2",
+    "moment-timezone": "^0.5.9",
     "navigator": "^1.0.1",
     "vue": "^2.0.5",
     "xmlhttprequest": "^1.8.0"

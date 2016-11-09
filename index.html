@@ -3,14 +3,18 @@
 	<meta charset="UTF-8">
 	<title>Timezoned</title>
 	
-	
+	<script src="bundle.js"></script>
 </head>
 <body>
 	<input id="autocomplete" placeholder="Enter your address"
 	              type="text"></input>
 	<div id="app">
-	  {{ message }}
+	  {{ time }}
+	  <br>
+	  {{info}}
 	</div>
-	<script src="bundle.js"></script>
+	<div id="view_components"></div>
+	<button id="add_new">Add New </button>
+	
 </body>
 </html>
