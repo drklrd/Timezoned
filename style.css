@@ -1,0 +1,57 @@
+[v-cloak] {
+  display: none;
+}
+
+.form-control{
+	border-radius: 0px !important;
+}
+
+.button-nice{
+	border:none;
+	padding: 15px;
+	width : 210px;
+
+}
+.button-nice-modal{
+	border:none;
+	padding: 15px;
+}
+
+.pac-container {
+    z-index: 100000;
+}
+
+.tile-default{
+	background-color: #2ecc71;
+	color: #ffffff;
+	padding: 20px;
+	margin : 5px;
+	border-radius: 5px;
+}
+
+.new-location-button{
+	padding: 20px;
+}
+
+.tile-zone{
+	
+	color: #ffffff;
+	padding: 20px;
+	margin : 5px;
+	border-radius: 5px;
+}
+
+.container{
+	margin-top: 20px;
+}
+
+.highlighted{
+	font-style: italic;
+	font-weight: bold;
+	font-size: 17px;
+}
+
+.place-header{
+	font-style: bold;
+	font-size: 25px;
+}

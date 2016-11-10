@@ -1,4 +1,4 @@
-var $ = require('jQuery');
+var $ = require('jquery/dist/jquery.js');
 
 module.exports = function (url, callback) {
     $.ajax({

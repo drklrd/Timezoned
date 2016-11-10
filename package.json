@@ -16,13 +16,15 @@
     "browserify": "^13.1.1"
   },
   "dependencies": {
-    "jQuery": "^1.7.4",
+    "bootstrap": "^3.3.7",
+    "jquery": "^3.1.1",
     "jsdom": "^9.8.3",
     "location": "0.0.1",
     "moment": "^2.15.2",
     "moment-timezone": "^0.5.9",
     "navigator": "^1.0.1",
     "vue": "^2.0.5",
+    "vue-resource": "^1.0.3",
     "xmlhttprequest": "^1.8.0"
   }
 }

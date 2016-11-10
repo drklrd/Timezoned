@@ -4,17 +4,110 @@
 	<title>Timezoned</title>
 	
 	<script src="bundle.js"></script>
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<link rel="stylesheet" type="text/css" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
 </head>
 <body>
-	<input id="autocomplete" placeholder="Enter your address"
-	              type="text"></input>
-	<div id="app">
-	  {{ time }}
-	  <br>
-	  {{info}}
+	<div class="container" id="app">
+		<div class="row">
+			<div class="col-xs-offset-4 col-xs-4 tile-default">
+				
+				  		<div v-cloak>
+				  			{{ time }}
+				  			<br>
+				  			{{info}}
+				  			<br>
+				  			<span class="place-header pull-right">
+				  				{{zoneId}}
+				  				<br>
+				  				{{zoneName}}
+				  			</span>
+				  			
+				  			
+				  		</div>
+
+					  
+					  
+				
+				
+
+			</div>
+
+
+			<div class="col-xs-3 ">
+					<button class="button-nice" v-on:click="addNewZoneModal(false)"> 
+					 <span class="glyphicon glyphicon-plus"></span> 
+					 	 Add New Location 
+					</button>
+					<br>
+					<br>
+					<button class="button-nice" v-on:click="addNewZoneModal(true)"> 
+					 <span class="glyphicon glyphicon-wrench"></span> 
+					 	 Change current location 
+					</button>
+				
+			</div>
+			
+			
+			
+				
+		</div>
+		<p>
+		<div class="row col-xs-offset-2">
+			<div  v-for="zone in zones">
+				<div class="col-xs-4 tile-zone" v-bind:style="{ backgroundColor: zone.zoneColor}" v-cloak>
+		  			<span class="place-header">
+		  				{{zone.place}}	
+		  			</span>
+		  			<br>
+		  			{{ zone.time }}
+		  			<br>
+		  			{{zone.info}}
+		  			<br>
+					<span class="pull-right">
+						{{zone.zoneId}}
+					</span>
+		  			
+		  			<br>
+		  			<span class="pull-right">
+		  				{{zone.zoneName}}
+		  			</span>
+		  			
+		  			<br>
+		  			<br>
+		  			<span class="highlighted">
+		  				{{zone.difference}}
+		  			</span>
+		  			
+				 </div>
+				
+			</div>
+		</div>
+
+		
+		<!-- Modal -->
+		<div class="modal fade" id="newZoneModal" tabindex="-1" role="dialog" aria-labelledby="newZoneModalLabel" aria-hidden="true">
+		  <div class="modal-dialog">
+		    <div class="modal-content">
+		      <div class="modal-header">
+		        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+		        <h4 class="modal-title" id="myModalLabel">Select Location for Time Zone</h4>
+		      </div>
+		      <div class="modal-body">
+		        	<input class="form-control"  id="autocomplete" placeholder="Enter your address" type="text"></input>
+		      </div>
+		      <div class="modal-footer">
+		        <button type="button" class="button-nice-modal" data-dismiss="modal">Cancel</button>
+		        <button type="button" class="button-nice-modal" v-on:click="addNewZone">OK</button>
+		      </div>
+		    </div>
+		  </div>
+		</div>
+
 	</div>
-	<div id="view_components"></div>
-	<button id="add_new">Add New </button>
+
+	
+	
 	
 </body>
 </html>
