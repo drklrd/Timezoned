@@ -80,7 +80,7 @@ window.addEventListener('load', function() {
 				var app = new Vue({
 					el: '#app',
 					data: {
-						time: 'Current Time xxx: ' + MomentTZ().tz(defaultData.timeZoneId).format('HH:mm:ss DD/MMM/YYYY ddd'),
+						time: 'Current Time : ' + MomentTZ().tz(defaultData.timeZoneId).format('HH:mm:ss DD/MMM/YYYY ddd'),
 						info: 'UTC ' + MomentTZ().tz(defaultData.timeZoneId).format('Z'),
 						zoneId: defaultData.timeZoneId,
 						zoneName: defaultData.timeZoneName,
