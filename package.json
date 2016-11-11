@@ -4,7 +4,8 @@
   "description": "Time Zone Conversion Utility",
   "main": "main.js",
   "scripts": {
-    "bundle": "./node_modules/.bin/browserify main.js -o bundle.js"
+    "bundle": "./node_modules/.bin/browserify main.js -o bundle.js",
+    "start" : "http-server"
   },
   "keywords": [
     "timezone",
@@ -25,6 +26,7 @@
     "navigator": "^1.0.1",
     "vue": "^2.0.5",
     "vue-resource": "^1.0.3",
-    "xmlhttprequest": "^1.8.0"
+    "xmlhttprequest": "^1.8.0",
+    "http-server" : "latest"
   }
 }
