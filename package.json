@@ -4,7 +4,7 @@
   "description": "Time Zone Conversion Utility",
   "main": "main.js",
   "scripts": {
-    "bundle": "./node_modules/.bin/browserify main.js -o bundles.js",
+    "bundle": "./node_modules/.bin/browserify main.js -o bundlescript.js",
     "start" : "http-server"
   },
   "keywords": [
