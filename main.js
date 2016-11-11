@@ -59,7 +59,7 @@ window.addEventListener('load', function() {
 				var app = new Vue({
 					el: '#app',
 					data: {
-						time: 'Current Time : ' + MomentTZ().tz(defaultData.timeZoneId).format('HH:mm:ss'),
+						time: 'Current Time : ' + MomentTZ().tz(defaultData.timeZoneId).format('HH:mm:ss DD/MMM/YYYY ddd'),
 						info: 'UTC ' + MomentTZ().tz(defaultData.timeZoneId).format('Z'),
 						zoneId: defaultData.timeZoneId,
 						zoneName: defaultData.timeZoneName,
@@ -90,7 +90,7 @@ window.addEventListener('load', function() {
 								var absoluteValue = String(Math.abs(offsetInSeconds));
 								var data = {
 									place: location.place,
-									time: 'Current Time : ' + MomentTZ().tz(data.timeZoneId).format('HH:mm:ss'),
+									time: 'Current Time : ' + MomentTZ().tz(data.timeZoneId).format('HH:mm:ss DD/MMM/YYYY ddd'),
 									info: 'UTC ' + MomentTZ().tz(data.timeZoneId).format('Z'),
 									zoneId: data.timeZoneId,
 									zoneName: data.timeZoneName,
