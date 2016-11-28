@@ -71,6 +71,8 @@ window.addEventListener('load', function() {
 	var location;
 	var colors = ['#1abc9c', '#2980b9', '#8e44ad', '#c0392b', '#2c3e50', '#e67e22'];
 
+	var updatedTime;
+
 	if (navigator.geolocation) {
 		navigator.geolocation.getCurrentPosition(function(position) {
 			var geolocation = {
@@ -81,7 +83,6 @@ window.addEventListener('load', function() {
 			getTimeZone(geolocation, function(data) {
 				defaultData = data;
 				var timeNoe = new Date();
-				alert(timeNoe)
 				var app = new Vue({
 					el: '#app',
 					data: {
@@ -96,7 +97,7 @@ window.addEventListener('load', function() {
 
 						this.zones = [];
 						$('#datetimepicker1').datetimepicker({
-							format: 'YYYY-MM-DD HH:mm A'
+							format: 'YYYY-MM-DD hh:mm A'
 						});
 					},
 					methods: {
@@ -119,7 +120,7 @@ window.addEventListener('load', function() {
 								var absoluteValue = String(Math.abs(offsetInSeconds));
 								var data = {
 									place: location.place,
-									time: 'Current Time : ' + MomentTZ().tz(data.timeZoneId).format('HH:mm:ss DD/MMM/YYYY ddd'),
+									time: 'Current Time : ' + MomentTZ(updatedTime).tz(data.timeZoneId).format('HH:mm:ss DD/MMM/YYYY ddd'),
 									info: 'UTC ' + MomentTZ().tz(data.timeZoneId).format('Z'),
 									zoneId: data.timeZoneId,
 									zoneName: data.timeZoneName,
@@ -153,7 +154,7 @@ window.addEventListener('load', function() {
 							console.log('datetimepicker1',$("#datetimepicker1").find("input").val());
 							var time = $("#datetimepicker1").find("input").val()
 							console.log('beu',MomentTZ(new Date(time)).tz(defaultData.timeZoneId).format('HH:mm:ss DD/MMM/YYYY ddd')) 
-							this.data.time = MomentTZ(new Date(time)).tz(defaultData.timeZoneId).format('HH:mm:ss DD/MMM/YYYY ddd')
+							updatedTime =new Date(time)
 						}
 					}
 				})
