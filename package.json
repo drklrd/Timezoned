@@ -5,7 +5,7 @@
   "main": "main.js",
   "scripts": {
     "bundle": "./node_modules/.bin/browserify main.js -o bundlescript.js",
-    "start" : "http-server"
+    "start": "http-server"
   },
   "keywords": [
     "timezone",
@@ -18,15 +18,16 @@
   },
   "dependencies": {
     "bootstrap": "^3.3.7",
+    "eonasdan-bootstrap-datetimepicker": "^4.17.43",
+    "http-server": "latest",
     "jquery": "^3.1.1",
     "jsdom": "^9.8.3",
     "location": "0.0.1",
-    "moment": "^2.15.2",
+    "moment": "^2.17.0",
     "moment-timezone": "^0.5.9",
     "navigator": "^1.0.1",
     "vue": "^2.0.5",
     "vue-resource": "^1.0.3",
-    "xmlhttprequest": "^1.8.0",
-    "http-server" : "latest"
+    "xmlhttprequest": "^1.8.0"
   }
 }

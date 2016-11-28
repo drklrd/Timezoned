@@ -2,11 +2,16 @@
 
 var Vue = require('vue/dist/vue.js');
 var VueResource = require('vue-resource/dist/vue-resource.min.js');
-window.$ = window.jQuery = require('jquery/dist/jquery.js')
-var GAPI = require('./gapi.js');
 var MomentTZ = require('moment-timezone');
-var Bootstrap = require('bootstrap/dist/js/bootstrap.js');
 
+// window.$ = window.jQuery = require('jquery/dist/jquery.js')
+var GAPI = require('./gapi.js');
+
+// window.moment = require('moment/min/moment.min.js');
+// require('bootstrap/js/transition.js')
+// require('bootstrap/js/collapse.js');
+// var Bootstrap = require('bootstrap/dist/js/bootstrap.min.js');
+// require('eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js');
 
 String.prototype.toHourMinutes = function() {
 
@@ -38,7 +43,6 @@ String.prototype.toHourMinutes = function() {
 
 }
 
-
 window.addEventListener('load', function() {
 
 	var defaultData;
@@ -69,6 +73,9 @@ window.addEventListener('load', function() {
 					mounted: function() {
 
 						this.zones = [];
+						$('#datetimepicker1').datetimepicker({
+							format: 'YYYY-MM-DD HH:mm A'
+						});
 					},
 					methods: {
 						addNewZoneModal: function(changeDefault) {
@@ -118,6 +125,13 @@ window.addEventListener('load', function() {
 
 							})
 
+						},
+
+						changeTime: function(){
+							console.log('datetimepicker1',$("#datetimepicker1").find("input").val());
+							var time = $("#datetimepicker1").find("input").val()
+							console.log('beu',MomentTZ(new Date(time)).tz(defaultData.timeZoneId).format('HH:mm:ss DD/MMM/YYYY ddd')) 
+							this.data.time = MomentTZ(new Date(time)).tz(defaultData.timeZoneId).format('HH:mm:ss DD/MMM/YYYY ddd')
 						}
 					}
 				})
