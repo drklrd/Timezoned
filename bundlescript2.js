@@ -114,7 +114,7 @@ window.addEventListener('load', function() {
 
 						this.zones = [];
 						$('#datetimepicker1').datetimepicker({
-							format: 'YYYY-MM-DD hh:mm A'
+							format: 'YYYY MM DD hh:mm A'
 						});
 					},
 					methods: {
@@ -178,6 +178,7 @@ window.addEventListener('load', function() {
 							$('#changeTimeModal').modal('hide');
 							console.log('datetimepicker1',$("#datetimepicker1").find("input").val());
 							var time = $("#datetimepicker1").find("input").val()
+							console.log('HERAM',time)
 							console.log('beu',MomentTZ(new Date(time)).tz(defaultData.timeZoneId).format('HH:mm:ss DD/MMM/YYYY ddd')) 
 							updatedTime =new Date(time);
 							this.time = nowTimeRenderer();
