@@ -55,3 +55,12 @@
 	font-style: bold;
 	font-size: 25px;
 }
+
+.change-time{
+	font-style: none;
+	color: #ffffff;
+	cursor: pointer;
+}
+.change-time:hover{
+	color: #ffffff;
+}

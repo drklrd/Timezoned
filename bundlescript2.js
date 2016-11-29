@@ -82,17 +82,34 @@ window.addEventListener('load', function() {
 
 			getTimeZone(geolocation, function(data) {
 				defaultData = data;
-				var timeNoe = new Date();
+
+				function nowTimeRenderer(){
+					if(!updatedTime){
+						return 'Current Time : ' + MomentTZ().tz(defaultData.timeZoneId).format('HH:mm:ss DD/MMM/YYYY ddd')
+					}else{
+						return 'Time : ' + MomentTZ(updatedTime).tz(defaultData.timeZoneId).format('HH:mm:ss DD/MMM/YYYY ddd')
+					}
+				};
+
+				function locationTimeRenderer(timeZoneId){
+					if(!updatedTime){
+						return 'Current Time : ' + MomentTZ().tz(timeZoneId).format('HH:mm:ss DD/MMM/YYYY ddd');
+					}else{
+						return ' Time : ' + MomentTZ(updatedTime).tz(timeZoneId).format('HH:mm:ss DD/MMM/YYYY ddd');
+					}
+				}
+				
 				var app = new Vue({
 					el: '#app',
 					data: {
-						time: 'Current Time : ' + MomentTZ(timeNoe).tz(defaultData.timeZoneId).format('HH:mm:ss DD/MMM/YYYY ddd'),
+						time: nowTimeRenderer(),
 						info: 'UTC ' + MomentTZ().tz(defaultData.timeZoneId).format('Z'),
 						zoneId: defaultData.timeZoneId,
 						zoneName: defaultData.timeZoneName,
 						zones: [],
 						changeDefault: false
 					},
+					
 					mounted: function() {
 
 						this.zones = [];
@@ -103,10 +120,17 @@ window.addEventListener('load', function() {
 					methods: {
 						addNewZoneModal: function(changeDefault) {
 							this.changeDefault = changeDefault;
+							if(changeDefault) {
+								updatedTime = false;
+								this.time = nowTimeRenderer();
+							}
 							$('#newZoneModal').modal('show');
 							$('#newZoneModal').on('shown.bs.modal', function() {
 								$('#autocomplete').focus();
 							})
+						},
+						changeTimeModal : function(){
+							$('#changeTimeModal').modal('show');
 						},
 						addNewZone: function() {
 							var context = this;
@@ -120,7 +144,7 @@ window.addEventListener('load', function() {
 								var absoluteValue = String(Math.abs(offsetInSeconds));
 								var data = {
 									place: location.place,
-									time: 'Current Time : ' + MomentTZ(updatedTime).tz(data.timeZoneId).format('HH:mm:ss DD/MMM/YYYY ddd'),
+									time: locationTimeRenderer(data.timeZoneId),
 									info: 'UTC ' + MomentTZ().tz(data.timeZoneId).format('Z'),
 									zoneId: data.timeZoneId,
 									zoneName: data.timeZoneName,
@@ -151,10 +175,12 @@ window.addEventListener('load', function() {
 						},
 
 						changeTime: function(){
+							$('#changeTimeModal').modal('hide');
 							console.log('datetimepicker1',$("#datetimepicker1").find("input").val());
 							var time = $("#datetimepicker1").find("input").val()
 							console.log('beu',MomentTZ(new Date(time)).tz(defaultData.timeZoneId).format('HH:mm:ss DD/MMM/YYYY ddd')) 
-							updatedTime =new Date(time)
+							updatedTime =new Date(time);
+							this.time = nowTimeRenderer();
 						}
 					}
 				})
